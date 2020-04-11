@@ -1,0 +1,42 @@
+* intro
+  Producer/Consumer written in statemachine DSL
+  transpiles to running code
+* build
+#+name: transpiler
+#+begin_src lisp
+;; needed for package and for create-sm-lisp
+  (ql:quickload :statemachine-transpiler) 
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  ; use the RP Assembler to create a state machine transpiler sm.lisp program
+  (statemachine-transpiler::create-sm-lisp)  
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  ;; re-load statemachine-transpiler with new sm.lisp file
+  (ql:quickload :statemachine-transpiler/transpiled)
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  (ql:quickload :producer-consumer)
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  ;; compile producer-comsumer.lisp using sm transpiler
+  (producer-consumer:create-producer-consumer)
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  ;; run the resulting program
+  (ql:quickload :producer-consumer/run)
+  (producer-consumer:run)
+#+end_src
+
+#+RESULTS: transpiler
+: :DONE
