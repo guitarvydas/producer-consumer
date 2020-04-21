@@ -5,10 +5,11 @@
     (let ((producer-consumer-dsl-str 
       (alexandria:read-file-into-string
         (asdf:system-relative-pathname :statemachine-transpiler "statemachine-transpiler.rpa"))))
-      (let ((producer-consumer-lisp-str (rp-parser:scan-and-parse producer-consumer-dsl-str)))
-	(with-open-file 
+      (let ((producer-consumer-lisp-str (rp-parser:scan-and-parse p producer-consumer-dsl-str)))
+	producer-consumer-lisp-str
+	#+nil(with-open-file 
 	    (pc-lisp-file
 	     (asdf:system-relative-pathname :statemachine-transpiler "producer-consumer.lisp")
 	     :direction :output :if-exists :supersede :if-does-not-exist :create)
 	  (write-string producer-consumer-lisp-str pc-lisp-file)
-	  :created-producer-consumer)))))
+	  "created producer-consumer.lisp")))))

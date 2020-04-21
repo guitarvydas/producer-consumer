@@ -4,20 +4,15 @@
 * build
 #+name: transpiler
 #+begin_src lisp
-;; needed for package and for create-sm-lisp
-  (ql:quickload :statemachine-transpiler) 
+  #| use the RP Assembler to create a state machine transpiler sm.lisp program |#
+  (ql:quickload :statemachine-transpiler) #| needed for package and for create-sm-lisp |#
 #+end_src
 
 #+name: transpiler
 #+begin_src lisp
-  ; use the RP Assembler to create a state machine transpiler sm.lisp program
-  (statemachine-transpiler::create-sm-lisp)  
-#+end_src
-
-#+name: transpiler
-#+begin_src lisp
-  ;; re-load statemachine-transpiler with new sm.lisp file
-  (ql:quickload :statemachine-transpiler/transpiled)
+  (statemachine-transpiler::create-sm-lisp)  #| creates sm.lisp |#
+  (load (asdf:system-relative-pathname :statemachine-transpiler "sm.lisp"))
+  "created and loaded sm.lisp - ready to use statemachine DSL"
 #+end_src
 
 #+name: transpiler
@@ -27,8 +22,14 @@
 
 #+name: transpiler
 #+begin_src lisp
-  ;; compile producer-comsumer.lisp using sm transpiler
   (producer-consumer:create-producer-consumer)
+#+end_src
+
+#+name: transpiler
+#+begin_src lisp
+  (producer-consumer:create-producer-consumer)
+  (load (asdf:system-relative-pathname :producer-consumer "producer-consumer"))
+  "created and load producer-consumer.lisp"
 #+end_src
 
 #+name: transpiler
@@ -39,4 +40,4 @@
 #+end_src
 
 #+RESULTS: transpiler
-: :DONE
+: #S(REPHRASE:TOKEN :KIND :EOF :TEXT "generated eof" :POSITION 0 :LINE 0)
