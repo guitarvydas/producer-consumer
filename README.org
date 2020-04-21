@@ -1,43 +1,29 @@
 * intro
-  Producer/Consumer written in statemachine DSL
-  transpiles to running code
+  Simple producer-consumer pipeline built in V0 of state language.
 * build
-#+name: transpiler
-#+begin_src lisp
-  #| use the RP Assembler to create a state machine transpiler sm.lisp program |#
-  (ql:quickload :statemachine-transpiler) #| needed for package and for create-sm-lisp |#
+#+name: dsl
+#+begin_src lisp :results output
+ (uiop:run-program "rm -rf ~/.cache/common-lisp ;
+ rm -rf ~/quicklisp/local-projects/*.fasl ;
+ rm -rf ~/quicklisp/local/projects/*~")
+ (ql:quickload :producer-consumer/generate-intermediate)
 #+end_src
 
-#+name: transpiler
-#+begin_src lisp
-  (statemachine-transpiler::create-sm-lisp)  #| creates sm.lisp |#
-  (load (asdf:system-relative-pathname :statemachine-transpiler "sm.lisp"))
-  "created and loaded sm.lisp - ready to use statemachine DSL"
+#+name: dsl
+#+begin_src lisp :results output
+  #| generates producer-consumer-intermediate.lisp
+     which needs to be passed through expr-dsl to resolve expressions
+     which results in final producer-consumer.lisp |#
+ (producer-consumer::generate-intermediate)
 #+end_src
 
-#+name: transpiler
-#+begin_src lisp
-  (ql:quickload :producer-consumer)
-#+end_src
 
-#+name: transpiler
-#+begin_src lisp
-  (producer-consumer:create-producer-consumer)
-#+end_src
 
-#+name: transpiler
-#+begin_src lisp
-  (producer-consumer:create-producer-consumer)
-  (load (asdf:system-relative-pathname :producer-consumer "producer-consumer"))
-  "created and load producer-consumer.lisp"
-#+end_src
 
-#+name: transpiler
-#+begin_src lisp
-  ;; run the resulting program
-  (ql:quickload :producer-consumer/run)
-  (producer-consumer:run)
-#+end_src
+#+RESULTS: dsl
+: To load "producer-consumer/generate-intermediate":
+:   Load 1 ASDF system:
+:     producer-consumer/generate-intermediate
+: ; Loading "producer-consumer/generate-intermediate"
+: [package producer-consumer]
 
-#+RESULTS: transpiler
-: #S(REPHRASE:TOKEN :KIND :EOF :TEXT "generated eof" :POSITION 0 :LINE 0)

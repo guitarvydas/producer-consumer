@@ -1,16 +1,14 @@
-
-
-machine producer [] [out]
+machine producer
   intially
     send out {t}
   end initially
 end machine
 
-machine consumer [in] []
+machine consumer
   state idle: on in: emit($in)
 end machine
 
 schematic
   [  p : producer   c : consumer ]
-  p.out -> c.in
+  p | c
 end schematic
