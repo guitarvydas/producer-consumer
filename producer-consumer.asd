@@ -1,5 +1,5 @@
 (defsystem :producer-consumer
-  :depends-on (:loops :alexandria :parsing-assembler/use :sm-dsl/use)
+  :depends-on (:sm-dsl/use)
   :components ((:module "source"
                         :pathname "./"
                         :components ((:file "package")

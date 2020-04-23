@@ -23,23 +23,17 @@
  (uiop:run-program "rm -rf ~/.cache/common-lisp ;
  rm -rf ~/quicklisp/local-projects/*.fasl ;
  rm -rf ~/quicklisp/local/projects/*~")
+ (ql:quickload :producer-consumer)
 #+end_src
 
 #+name: dsl
 #+begin_src lisp :results output
-  (assert nil)
+  (load (producer-consumer::path "generate.lisp"))
+#+end_src
+#+name: dsl
+#+begin_src lisp :results output
+  (producer-consumer::generate)
 #+end_src
 
-
-
-
-
-
-
 #+RESULTS: dsl
-: To load "producer-consumer/generate-intermediate":
-:   Load 1 ASDF system:
-:     producer-consumer/generate-intermediate
-: ; Loading "producer-consumer/generate-intermediate"
-: [package producer-consumer]
 
