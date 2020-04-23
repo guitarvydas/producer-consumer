@@ -17,6 +17,22 @@
  (producer-consumer::generate-intermediate)
 #+end_src
 
+* development
+#+name: dsl
+#+begin_src lisp :results output
+ (uiop:run-program "rm -rf ~/.cache/common-lisp ;
+ rm -rf ~/quicklisp/local-projects/*.fasl ;
+ rm -rf ~/quicklisp/local/projects/*~")
+#+end_src
+
+#+name: dsl
+#+begin_src lisp :results output
+  (assert nil)
+#+end_src
+
+
+
+
 
 
 

@@ -1,14 +1,19 @@
 (defsystem :producer-consumer
-  :depends-on (:loops :alexandria :parsing-assembler/use :state-dsl/use)
+  :depends-on (:loops :alexandria :parsing-assembler/use :sm-dsl/use)
   :components ((:module "source"
                         :pathname "./"
-                        :components ((:file "package")))))
+                        :components ((:file "package")
+				     (:file "path")))))
 
-(defsystem :producer-consumer/final
+(defsystem :producer-consumer/generate
   :depends-on (:producer-consumer)
   :components ((:module "source"
                         :pathname "./"
-                        :components (
-				     (:file "mechanisms")
-				     (:file "main")))))
+                        :components ((:file "generate")))))
+
+(defsystem :producer-consumer/run
+  :depends-on (:producer-consumer)
+  :components ((:module "source"
+                        :pathname "./"
+                        :components ((:file "main")))))
 
