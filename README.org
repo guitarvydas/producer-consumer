@@ -35,5 +35,87 @@
   (producer-consumer::generate)
 #+end_src
 
+* all packages (dev)
+#+name: dsl
+#+begin_src lisp :results output
+(uiop:run-program "rm -rf ~/.cache/common-lisp ;
+  rm -rf ~/quicklisp/local-projects/*/*.fasl ;
+  rm -rf ~/quicklisp/local/projects/*/*~")
+(ql:quickload :producer-consumer)
+#+end_src
+
+* all (dev)
+#+name: dsl
+#+begin_src lisp :results output
+(ql:quickload :parsing-assembler)
+
+#| stack-dsl |#
+(ql:quickload :stack-dsl/generate)
+(stack-dsl::generate)
+
+#| sm-dsl code generation |#
+(ql:quickload :sm-dsl)
+(load (sm-dsl::path "generate-stacks.lisp"))
+(sm-dsl::generate-stacks)
+(ql:quickload :sm-dsl/generate)
+(sm-dsl::generate "SM-DSL")
+
+#| sm-dsl |#
+(ql:quickload :sm-dsl)
+(load (sm-dsl::path "stacks.lisp"))
+(load (sm-dsl::path "classes.lisp"))
+(load (sm-dsl::path "macros.lisp"))
+(load (sm-dsl::path "sm-dsl.lisp"))
+(load (sm-dsl::path "mechanisms.lisp"))
+(load (sm-dsl::path "transpile.lisp"))
+
+#| producer-consumer |#
+(ql:quickload :producer-consumer)
+(load (producer-consumer::path "generate.lisp"))
+#+end_src
+
+#+name: dsl
+#+begin_src lisp :results output
+ (producer-consumer::generate)
+#+end_src
+
+
+
 #+RESULTS: dsl
+#+begin_example
+To load "parsing-assembler":
+  Load 1 ASDF system:
+    parsing-assembler
+; Loading "parsing-assembler"
+
+To load "stack-dsl/generate":
+  Load 1 ASDF system:
+    stack-dsl/generate
+; Loading "stack-dsl/generate"
+
+To load "sm-dsl":
+  Load 1 ASDF system:
+    sm-dsl
+; Loading "sm-dsl"
+[package sm-dsl]
+transpiling stacks.dsl...
+in stack-dsl
+file /home/tarvydas/quicklisp/local-projects/sm-dsl/stacks.lisp written
+To load "sm-dsl/generate":
+  Load 1 ASDF system:
+    sm-dsl/generate
+; Loading "sm-dsl/generate"
+
+To load "sm-dsl":
+  Load 1 ASDF system:
+    sm-dsl
+; Loading "sm-dsl"
+
+To load "producer-consumer":
+  Load 1 ASDF system:
+    producer-consumer
+; Loading "producer-consumer"
+..................................................
+[package producer-consumer]
+#+end_example
 
