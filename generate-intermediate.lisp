@@ -1,11 +1,6 @@
 (in-package :producer-consumer)
 
 (defun generate-intermediate ()
-  (format *standard-output* "~&transpiling stacks.dsl...")
-  (format *standard-output* "~&~a~%"
-	  (stack-dsl::transpile-stack
-	   (asdf:system-relative-pathname :producer-consumer "stacks.dsl")
-	   (asdf:system-relative-pathname :producer-consumer "stacks.lisp")))
   (format *standard-output* "~&transpiling producer-consumer.dsl...")
   (format *standard-output* "~&~a~%"
 	  (state-dsl::transpile-state
