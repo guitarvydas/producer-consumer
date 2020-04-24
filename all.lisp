@@ -15,7 +15,6 @@
 (sm-dsl::generate "SM-DSL")
 
 #| sm-dsl |#
-(ql:quickload :sm-dsl)
 (load (sm-dsl::path "stacks.lisp"))
 (load (sm-dsl::path "classes.lisp"))
 (load (sm-dsl::path "macros.lisp"))
