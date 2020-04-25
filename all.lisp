@@ -39,5 +39,5 @@
 	 (eval sexpr)
 	 (setf sexpr (read s nil :eof))))))
 
+;(do-all)
 ;(producer-consumer::generate)
- 
