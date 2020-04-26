@@ -1,3 +1,6 @@
+* status
+  using producer-consumer development
+  debugging stacks
 * intro
   Simple producer-consumer pipeline built in V0 of state language.
 * build
@@ -82,40 +85,4 @@
 
 
 #+RESULTS: dsl
-#+begin_example
-To load "parsing-assembler":
-  Load 1 ASDF system:
-    parsing-assembler
-; Loading "parsing-assembler"
-
-To load "stack-dsl/generate":
-  Load 1 ASDF system:
-    stack-dsl/generate
-; Loading "stack-dsl/generate"
-
-To load "sm-dsl":
-  Load 1 ASDF system:
-    sm-dsl
-; Loading "sm-dsl"
-[package sm-dsl]
-transpiling stacks.dsl...
-in stack-dsl
-file /home/tarvydas/quicklisp/local-projects/sm-dsl/stacks.lisp written
-To load "sm-dsl/generate":
-  Load 1 ASDF system:
-    sm-dsl/generate
-; Loading "sm-dsl/generate"
-
-To load "sm-dsl":
-  Load 1 ASDF system:
-    sm-dsl
-; Loading "sm-dsl"
-
-To load "producer-consumer":
-  Load 1 ASDF system:
-    producer-consumer
-; Loading "producer-consumer"
-..................................................
-[package producer-consumer]
-#+end_example
 
