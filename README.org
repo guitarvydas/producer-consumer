@@ -3,7 +3,97 @@
   debugging stacks
 * intro
   Simple producer-consumer pipeline built in V0 of state language.
-* build
+* development
+#+name: dsl
+#+begin_src lisp :results output
+ (uiop:run-program "rm -rf ~/.cache/common-lisp ;
+ rm -rf ~/quicklisp/local-projects/*.fasl ;
+ rm -rf ~/quicklisp/local/projects/*~")
+ (ql:quickload :producer-consumer)
+#+end_src
+
+#+name: dsl
+#+begin_src lisp :results output
+  (load (producer-consumer::path "generate.lisp"))
+#+end_src
+
+#+name: dsl
+#+begin_src lisp :results output
+(trace sm-dsl::$callExpr_CoerceTo_expr)
+(trace sm-dsl::$callStatement__CoerceTo_statement)
+(trace sm-dsl::$callStatement__NewScope)
+(trace sm-dsl::$callStatement__Output)
+(trace sm-dsl::$dollarExpr__CoerceTo_expr)
+(trace sm-dsl::$dollarExpr__NewScope)
+(trace sm-dsl::$dollarExpr__Output)
+(trace sm-dsl::$event__EndScope)
+(trace sm-dsl::$event__NewScope)
+(trace sm-dsl::$eventsBag__AppendFrom_event)
+(trace sm-dsl::$eventsBag__NewScope)
+(trace sm-dsl::$eventsBag__Output)
+(trace sm-dsl::$event__SetField_Code_from_statementsBag)
+(trace sm-dsl::$event__SetField_name_from_name)
+(trace sm-dsl::$expr__NewScope)
+(trace sm-dsl::$expr__Output)
+(trace sm-dsl::$expr_ReplaceFrom_expr)
+(trace sm-dsl::$exprsBag__AppendFrom_expr)
+(trace sm-dsl::$exprsBag__NewScope)
+(trace sm-dsl::$exprsBag__Output)
+(trace sm-dsl::$machineDescriptor__Emit)
+(trace sm-dsl::$machineDescriptor__NewScope)
+(trace sm-dsl::$machineDescriptor__Output)
+(trace sm-dsl::$machineDescriptor__ReplaceFrom_machineDescriptor)
+(trace sm-dsl::$machineDescriptor__SetField_initiallyDescriptor_from_StatementsBag)
+(trace sm-dsl::$machineDescriptor__SetField_pipeline_from_pipeline)
+(trace sm-dsl::$machine__SetField_states_from_StatesBag)
+(trace sm-dsl::$makeEmptyExpr)
+(trace sm-dsl::$name__NewScope)
+(trace sm-dsl::$name__Output)
+(trace sm-dsl::$name__ReplaceFrom_Name)
+(trace sm-dsl::$name__Replace_From_name)
+(trace sm-dsl::$pipeline__AppendFrom_name)
+(trace sm-dsl::$pipeline__AppendFrom_pipeline)
+(trace sm-dsl::$pipeline__NewScope)
+(trace sm-dsl::$pipeline__Output)
+(trace sm-dsl::$rawExpr__AppendField_rawText_from_string)
+(trace sm-dsl::$rawExpr__CoerceTo_expr)
+(trace sm-dsl::$rawExpr__NewScope)
+(trace sm-dsl::$rawExpr__Output)
+(trace sm-dsl::$rawExpr__ReplaceFrom_expr)
+(trace sm-dsl::$returnEmptyExprsBag)
+(trace sm-dsl::$sendStatement__CoerceTo_statement)
+(trace sm-dsl::$sendStatement__NewScope)
+(trace sm-dsl::$sendStatement__Output)
+(trace sm-dsl::$statementsBag__AppendFrom_statement)
+(trace sm-dsl::$statementsBag__NewScope)
+(trace sm-dsl::$statementsBag__Output)
+(trace sm-dsl::$statement__SetField_arg_from_expr)
+(trace sm-dsl::$statement__SetField_argsfrom_exprsBag)
+(trace sm-dsl::$statement__SetField_name_from_name)
+(trace sm-dsl::$state__NewScope)
+(trace sm-dsl::$state__Output)
+(trace sm-dsl::$statesBag__AppendFrom_state)
+(trace sm-dsl::$statesBag__NewScope)
+(trace sm-dsl::$statesBag__Output)
+(trace sm-dsl::$state__SetField_events_from_eventsBag)
+(trace sm-dsl::$state__SetField_name_from_name)
+(trace sm-dsl::$string__GetText)
+(trace sm-dsl::$symbol__GetName)
+(trace sm-dsl::$symbol__GetName$)
+(trace sm-dsl::$symbol__GetName$name__ReplaceFrom_name)
+(trace sm-dsl::pipeline__AppendFrom_name)
+  (trace sm-dsl::machine)
+  (trace sm-dsl::$name__NewScope)
+#+end_src
+
+#+name: dsl
+#+begin_src lisp :results output
+  (producer-consumer::generate)
+#+end_src
+
+
+* deprecated
+** build
 #+name: dsl
 #+begin_src lisp :results output
  (uiop:run-program "rm -rf ~/.cache/common-lisp ;
@@ -20,25 +110,7 @@
  (producer-consumer::generate-intermediate)
 #+end_src
 
-* development
-#+name: dsl
-#+begin_src lisp :results output
- (uiop:run-program "rm -rf ~/.cache/common-lisp ;
- rm -rf ~/quicklisp/local-projects/*.fasl ;
- rm -rf ~/quicklisp/local/projects/*~")
- (ql:quickload :producer-consumer)
-#+end_src
-
-#+name: dsl
-#+begin_src lisp :results output
-  (load (producer-consumer::path "generate.lisp"))
-#+end_src
-#+name: dsl
-#+begin_src lisp :results output
-  (producer-consumer::generate)
-#+end_src
-
-* all packages (dev)
+** all packages (dev)
 #+name: dsl
 #+begin_src lisp :results output
 (uiop:run-program "rm -rf ~/.cache/common-lisp ;
@@ -47,7 +119,7 @@
 (ql:quickload :producer-consumer)
 #+end_src
 
-* all (dev)
+** all (dev)
 #+name: dsl
 #+begin_src lisp :results output
 (ql:quickload :parsing-assembler)
