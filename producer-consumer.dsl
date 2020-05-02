@@ -1,5 +1,5 @@
 machine producer
-  intially
+  initially
     send out {t}
   end initially
 end machine
