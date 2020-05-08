@@ -5,9 +5,10 @@ machine producer
 end machine
 
 machine consumer
-  state idle : on in : dosomething
+  state idle: on in: emit($in)
 end machine
 
-pipeline
-  producer | consumer
-end pipeline
+schematic
+  [  p : producer   c : consumer ]
+  p | c
+end schematic

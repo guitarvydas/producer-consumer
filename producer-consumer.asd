@@ -9,11 +9,16 @@
   :depends-on (:producer-consumer)
   :components ((:module "source"
                         :pathname "./"
-                        :components ((:file "generate")))))
+                        :components ((:static-file "producer-consumer.dsl")
+				     (:file "generate"
+					    :depends-on ("package"
+							 "producer-consumer.dsl"))))))
 
-(defsystem :producer-consumer/run
+				     
+
+(defsystem :producer-consumer/use
   :depends-on (:producer-consumer)
   :components ((:module "source"
                         :pathname "./"
-                        :components ((:file "main")))))
+                        :components ((:file "producer-consumer")))))
 
