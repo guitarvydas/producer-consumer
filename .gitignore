@@ -8,3 +8,5 @@ junk.*
 stacks.lisp
 
 .#README.org
+
+.#old-producer-comsumer.dsl
